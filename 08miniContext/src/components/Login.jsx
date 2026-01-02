@@ -22,7 +22,7 @@ function Login() {
       </input>
       <br/>
       <input 
-      type='text' 
+      type='password' 
       placeholder='password'
       value={password}
       onChange={(e) => setPassword(e.target.value)}
