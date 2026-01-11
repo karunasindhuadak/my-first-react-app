@@ -4,7 +4,7 @@ import { Button, Logo, Input } from "./index";
 import authService from "../appwrite/auth";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { login as stateLogin } from "../store/authSlice";
+import { login as storeLogin } from "../store/authSlice";
 
 function Login() {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ function Login() {
       const session = await authService.login(data);
       if (session) {
         const userData = await authService.getCurrentUser();
-        if (userData) dispatch(stateLogin());
+        if (userData) dispatch(storeLogin());
         navigate("/");
       }
     } catch (error) {
