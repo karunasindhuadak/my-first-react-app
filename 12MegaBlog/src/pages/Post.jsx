@@ -12,7 +12,7 @@ function Post() {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
   const navigate = useNavigate();
-  const userData = useSelector((state) => state.auth.userData)
+  const userData = useSelector((state) => state.auth.userData);
 
   useEffect(() => {
     if (slug) {
@@ -30,9 +30,7 @@ function Post() {
 
   const deletePost = () => {
     service.deletePost(post.$id).then((status) => {
-      if (!status) {
-        return;
-      }
+      if (!status) return;
       service.deleteFile(post.featuredImage);
       navigate("/");
     });
@@ -41,19 +39,20 @@ function Post() {
   const isAuthor = post && userData ? post.userId === userData.$id : false;
 
   return post ? (
-    <div className="py-8">
+    <div className="w-full py-8">
       <Container>
-        <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+        {/* Featured image */}
+        <div className="relative mb-6 overflow-hidden rounded-xl border border-slate-200 bg-white">
           <img
             src={service.getFilePreview(post.featuredImage)}
             alt={post.title}
-            className="rounded-xl"
+            className="w-full max-h-[420px] object-cover"
           />
 
           {isAuthor && (
-            <div className="absolute right-6 top-6">
+            <div className="absolute top-4 right-4 flex gap-2">
               <Link to={`/edit-post/${post.$id}`}>
-                <Button bgColor="bg-green-500" className="mr-3">
+                <Button bgColor="bg-green-500">
                   Edit
                 </Button>
               </Link>
@@ -63,10 +62,18 @@ function Post() {
             </div>
           )}
         </div>
-        <div className="w-full mb-6">
-          <h1 className="text-2xl font-bold">{post.title}</h1>
+
+        {/* Title */}
+        <div className="mb-6">
+          <h1 className="text-2xl font-semibold text-slate-800">
+            {post.title}
+          </h1>
         </div>
-        <div className="browser-css">{parse(post.content)}</div>
+
+        {/* Content */}
+        <div className="prose prose-slate max-w-none">
+          {parse(post.content)}
+        </div>
       </Container>
     </div>
   ) : null;

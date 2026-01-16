@@ -6,66 +6,57 @@ import { useNavigate } from "react-router-dom";
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
-  // console.log("authStatus in header:", authStatus);
   const navigate = useNavigate();
 
   const navItems = [
-    {
-      name: "Home",
-      slug: "/",
-      active: true,
-    },
-    {
-      name: "Login",
-      slug: "/login",
-      active: !authStatus,
-    },
-    {
-      name: "Signup",
-      slug: "/signup",
-      active: !authStatus,
-    },
-    {
-      name: "All Posts",
-      slug: "/all-posts",
-      active: authStatus,
-    },
-    {
-      name: "Add Post",
-      slug: "/add-post",
-      active: authStatus,
-    },
+    { name: "Home", slug: "/", active: true },
+    { name: "Login", slug: "/login", active: !authStatus },
+    { name: "Signup", slug: "/signup", active: !authStatus },
+    { name: "All Posts", slug: "/all-posts", active: authStatus },
+    { name: "Add Post", slug: "/add-post", active: authStatus },
   ];
+
   return (
-    <header className='py-3 shadow bg-gray-500'>
+    <header className="bg-white border-b border-slate-200">
       <Container>
-        <nav className="flex">
-          <div className="mr-4">
-            <Link to='/'>
-              <Logo/>
+        <nav className="flex items-center h-14">
+          <div className="mr-6 flex items-center">
+            <Link to="/">
+              <Logo />
             </Link>
           </div>
-          <ul className='flex ml-auto'>
-            {navItems.map((item) => 
-            item.active ? (
-              <li key = {item.name}>
-                <button
-                onClick={() => navigate(item.slug)}
-                className='inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
-                >{item.name}</button>
-              </li>
-            ) : null
+
+          <ul className="flex items-center gap-1 ml-auto">
+            {navItems.map((item) =>
+              item.active ? (
+                <li key={item.name}>
+                  <button
+                    onClick={() => navigate(item.slug)}
+                    className="
+                      px-4 py-2
+                      text-sm font-medium text-slate-600
+                      rounded-md
+                      hover:text-slate-900
+                      hover:bg-slate-100
+                      transition-colors duration-200
+                    "
+                  >
+                    {item.name}
+                  </button>
+                </li>
+              ) : null
             )}
           </ul>
+
           {authStatus && (
-            <li>
-              <LogoutBtn/>
-            </li>
+            <div className="ml-4">
+              <LogoutBtn />
+            </div>
           )}
         </nav>
       </Container>
     </header>
-  )
+  );
 }
 
 export default Header;

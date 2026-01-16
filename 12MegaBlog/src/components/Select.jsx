@@ -1,28 +1,49 @@
-import React, {useId} from 'react'
+import React, { useId } from 'react'
 
-function Select({
+function Select(
+  {
     label,
     options,
-    className= "",
+    className = "",
     ...props
-}, ref) {
-    const id = useId()
+  },
+  ref
+) {
+  const id = useId()
+
   return (
-    <div className='w-full'>
-      {label && <label htmlFor={id} className=''></label>}
+    <div className="w-full">
+      {label && (
+        <label
+          htmlFor={id}
+          className="block mb-1.5 text-sm font-medium text-slate-700"
+        >
+          {label}
+        </label>
+      )}
+
       <select
-      id={id}
-      {...props}
-      ref={ref}
-      className={`px-3 py-2 rounded-lg bg-white text-black outline-none focus:bg-gray-50 duration-200 border border-gray-200 w-full ${className}`}
+        id={id}
+        ref={ref}
+        {...props}
+        className={`
+          w-full
+          px-3 py-2
+          rounded-md
+          bg-white
+          text-sm text-slate-800
+          border border-slate-300
+          focus:outline-none
+          focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+          transition-colors duration-200
+          ${className}
+        `}
       >
-        {
-            options?.map((option) => (
-                <option id={option} value={option}>
-                    {option}
-                </option>
-            ))
-        }
+        {options?.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
       </select>
     </div>
   )

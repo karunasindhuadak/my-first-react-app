@@ -1,3 +1,5 @@
+EditPost.jsx
+
 import React from 'react'
 import {Container, PostForm} from '../components/index'
 import service from '../appwrite/config'

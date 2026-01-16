@@ -3,24 +3,32 @@ import service from "../appwrite/config";
 import { Link } from "react-router-dom";
 
 function PostCard({ $id, title, featuredImage }) {
-  // console.log('PostCard :: featuredImage', featuredImage)
-  // console.log(
-  //   "PostCard :: service.getFilePreview(featuredImage)",
-  //   service.getFilePreview(featuredImage)
-  // );
   return (
     <Link to={`/post/${$id}`}>
-      <div className="w-full bg-gray-100 rounded-xl p-4">
-        <div className="w-full justify-center mb-4">
-          {featuredImage && (
+      <div
+        className="
+          w-full
+          bg-white
+          border border-slate-200
+          rounded-xl
+          p-4
+          transition-shadow duration-200
+          hover:shadow-md
+        "
+      >
+        {featuredImage && (
+          <div className="w-full mb-3 overflow-hidden rounded-lg">
             <img
               src={service.getFilePreview(featuredImage)}
               alt={title}
-              className="rounded-xl"
+              className="w-full h-48 object-cover"
             />
-          )}
-        </div>
-        <h2 className="text-xl font-bold">{title}</h2>
+          </div>
+        )}
+
+        <h2 className="text-base font-semibold text-slate-800 line-clamp-2">
+          {title}
+        </h2>
       </div>
     </Link>
   );

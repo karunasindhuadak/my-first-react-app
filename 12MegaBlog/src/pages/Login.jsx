@@ -1,8 +1,9 @@
 import React from 'react'
-import {Login as LoginComponent} from '../components/index'
+import { Login as LoginComponent } from '../components/index'
+
 function Login() {
   return (
-    <div>
+    <div className="w-full min-h-screen bg-slate-50 flex items-center justify-center">
       <LoginComponent />
     </div>
   )
