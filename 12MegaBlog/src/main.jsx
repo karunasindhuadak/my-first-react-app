@@ -5,15 +5,8 @@ import App from "./App.jsx";
 import { Provider } from "react-redux";
 import { store } from "./store/store.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import {
-  Home,
-  Login,
-  Signup,
-  AddPost,
-  AllPost,
-  EditPost,
-  Post,
-} from "./pages/indexPages.js";
+import {Home, Login, Signup, AddPost,EditPost, Post} from "./pages/indexPages.js";
+import AllPost from "./pages/Allpost.jsx";
 
 import AuthLayout from "./components/AuthLayout.jsx";
 
