@@ -21,7 +21,7 @@ function PostCard({ $id, title, featuredImage }) {
             <img
               src={service.getFilePreview(featuredImage)}
               alt={title}
-              className="w-full h-48 object-cover"
+              className="w-full h-48 object-contain"
             />
           </div>
         )}
