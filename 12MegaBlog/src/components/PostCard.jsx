@@ -10,23 +10,25 @@ function PostCard({ $id, title, featuredImage }) {
           w-full
           bg-white
           border border-slate-200
-          rounded-xl
+          rounded-lg
           p-4
-          transition-shadow duration-200
-          hover:shadow-md
+          transition
+          duration-200
+          hover:shadow-sm
+          hover:border-slate-300
         "
       >
         {featuredImage && (
-          <div className="w-full mb-3 overflow-hidden rounded-lg">
+          <div className="w-full mb-3 rounded-md overflow-hidden bg-slate-50">
             <img
               src={service.getFilePreview(featuredImage)}
               alt={title}
-              className="w-full h-48 object-contain rounded-lg"
+              className="w-full h-48 object-contain"
             />
           </div>
         )}
 
-        <h2 className="text-base font-semibold text-slate-800 line-clamp-2">
+        <h2 className="text-sm font-medium text-slate-800 leading-snug line-clamp-2">
           {title}
         </h2>
       </div>
