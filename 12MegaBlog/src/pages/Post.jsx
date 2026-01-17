@@ -46,7 +46,7 @@ function Post() {
           <img
             src={service.getFilePreview(post.featuredImage)}
             alt={post.title}
-            className="w-full max-h-[420px] object-cover"
+            className="w-full max-h-[420px] object-contain"
           />
 
           {isAuthor && (
