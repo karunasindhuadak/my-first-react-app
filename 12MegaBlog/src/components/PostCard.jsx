@@ -19,11 +19,11 @@ function PostCard({ $id, title, featuredImage }) {
         "
       >
         {featuredImage && (
-          <div className="w-full mb-3 rounded-md overflow-hidden bg-slate-50">
+          <div className="w-full mb-3 rounded-md overflow-hidden bg-slate-50 flex items-center justify-center">
             <img
               src={service.getFilePreview(featuredImage)}
               alt={title}
-              className="w-full h-48 object-contain"
+              className="max-w-full max-h-full h-48 object-contain rounded-md"
             />
           </div>
         )}
