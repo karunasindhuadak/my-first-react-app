@@ -14,7 +14,7 @@ function Footer() {
                 <Logo width="100px" />
               </div>
               <p className="text-sm text-slate-500">
-                © 2023. All rights reserved.
+                © 2026. All rights reserved.
               </p>
             </div>
           </div>
